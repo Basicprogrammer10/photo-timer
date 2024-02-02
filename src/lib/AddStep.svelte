@@ -21,6 +21,9 @@
       if (step) s.add(step);
       return s;
     });
+
+    description = "";
+    duration = "";
   }
 </script>
 

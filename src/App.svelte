@@ -10,25 +10,22 @@
   <p>Created By Connor Slade</p>
 
   <hr />
-
   <div class="section">
     <Timer />
   </div>
 
   <hr />
-
-  <div class="section">
-    <AddStep />
-  </div>
-
-  <hr />
-
   <div class="section">
     {#if $state.steps.length > 0}
       <Steps />
     {:else}
       <em>No steps...</em>
     {/if}
+  </div>
+
+  <hr />
+  <div class="section">
+    <AddStep />
   </div>
 </main>
 

@@ -36,7 +36,6 @@
         <button on:click={() => moveDown(idx)}>⇓</button>
         <p>
           {#if instruction instanceof Wait}
-            <!-- if $timer.step == idx set color to green -->
             <span class="program-item-info" style:background-color={color(idx)}>
               Wait {formatTime(instruction.time)}
             </span>
@@ -58,7 +57,14 @@
   }
 
   .program-item {
-    display: ruby;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .program-item > button {
+    width: 20px;
+    height: 20px;
   }
 
   .program-item-info {

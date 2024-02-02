@@ -14,7 +14,9 @@ export class Program {
           return new Instruction(step.description);
         });
       }
-    } catch (e) {
+    } catch (e) {}
+
+    if (this.steps.length === 0) {
       this.steps = [
         new Wait("Wait for five seconds", 5),
         new Instruction("Fill with water"),
