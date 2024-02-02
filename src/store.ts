@@ -6,12 +6,13 @@ export class Program {
     new Instruction("Fill with water"),
   ];
   pointer = 0;
+  running = false;
 
   constructor(steps: Step[]) {
     // this.steps = steps;
   }
 
-  addStep(step: Step) {
+  add(step: Step) {
     this.steps.push(step);
   }
 

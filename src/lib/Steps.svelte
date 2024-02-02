@@ -1,5 +1,6 @@
 <script lang="ts">
   import { state, Wait } from "../store";
+  import { formatTime } from "../util";
 
   const deleteStep = (idx: number) =>
     state.update((s) => {
@@ -29,7 +30,9 @@
         <button on:click={() => moveDown(idx)}>⇓</button>
         <p>
           {#if instruction instanceof Wait}
-            <span class="program-item-info">Wait {instruction.time}s</span>
+            <span class="program-item-info"
+              >Wait {formatTime(instruction.time)}</span
+            >
           {:else}
             <span class="program-item-info">{instruction.name}</span>
           {/if}

@@ -1,8 +1,7 @@
 <script lang="ts">
+  import AddStep from "./lib/AddStep.svelte";
   import Steps from "./lib/Steps.svelte";
   import { state } from "./store";
-
-  let selected = "wait";
 </script>
 
 <main>
@@ -19,20 +18,7 @@
   </div>
 
   <div class="section">
-    <select bind:value={selected}>
-      <option value="wait">Wait</option>
-      <option value="instruction">Instruction</option>
-    </select>
-
-    <button>+</button>
-
-    <br />
-    <br />
-    <input type="text" placeholder="Description" />
-
-    {#if selected === "wait"}
-      <!-- TIME SELECTOR -->
-    {/if}
+    <AddStep />
   </div>
 
   <div class="section">
