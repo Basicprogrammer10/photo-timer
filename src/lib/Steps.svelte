@@ -34,16 +34,16 @@
         <button on:click={() => deleteStep(idx)}>×</button>
         <button on:click={() => moveUp(idx)}>⇑</button>
         <button on:click={() => moveDown(idx)}>⇓</button>
+        {#if instruction instanceof Wait}
+          <span class="program-item-info" style:background-color={color(idx)}>
+            Wait {formatTime(instruction.time)}
+          </span>
+        {:else}
+          <span class="program-item-info" style:background-color={color(idx)}>
+            {instruction.name}
+          </span>
+        {/if}
         <p>
-          {#if instruction instanceof Wait}
-            <span class="program-item-info" style:background-color={color(idx)}>
-              Wait {formatTime(instruction.time)}
-            </span>
-          {:else}
-            <span class="program-item-info" style:background-color={color(idx)}>
-              {instruction.name}
-            </span>
-          {/if}
           {instruction.description}
         </p>
       </div>
@@ -52,19 +52,9 @@
 </main>
 
 <style>
-  .steps {
-    display: grid;
-  }
-
-  .program-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .program-item > button {
-    width: 20px;
-    height: 20px;
+  .program-item > * {
+    display: inline;
+    margin-bottom: .5em;
   }
 
   .program-item-info {

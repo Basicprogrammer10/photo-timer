@@ -32,7 +32,6 @@
 <style>
   .section {
     padding: 10px;
-    width: max-content;
     margin-top: 10px;
   }
 </style>
