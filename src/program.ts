@@ -1,14 +1,26 @@
 import { writable } from "svelte/store";
 
 export class Program {
-  steps: Step[] = [
-    new Wait("Wait for five seconds", 5),
-    new Instruction("Fill with water"),
-    new Wait("Wait again", 8),
-  ];
+  steps: Step[] = [];
 
-  constructor(steps: Step[]) {
-    // this.steps = steps;
+  constructor() {
+    try {
+      const stored = window.localStorage.getItem("program");
+      if (stored) {
+        const data = JSON.parse(stored);
+        this.steps = data.steps.map((step: any) => {
+          if (step.name === "Wait")
+            return new Wait(step.description, step.time);
+          return new Instruction(step.description);
+        });
+      }
+    } catch (e) {
+      this.steps = [
+        new Wait("Wait for five seconds", 5),
+        new Instruction("Fill with water"),
+        new Wait("Wait again", 8),
+      ];
+    }
   }
 
   add(step: Step) {
@@ -61,5 +73,9 @@ export class Instruction extends Step {
   }
 }
 
-export const program = new Program([]);
+export const program = new Program();
 export const state = writable(program);
+
+state.subscribe((value) => {
+  window.localStorage.setItem("program", JSON.stringify(value));
+});
