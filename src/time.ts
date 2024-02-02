@@ -38,3 +38,13 @@ export function parseTime(time: string) {
 
   return sec;
 }
+
+// Formats a duration in hh:mm:ss format
+export function formatTimeClock(sec: number): string {
+  let hours = Math.floor(sec / 3600);
+  let minutes = Math.floor((sec % 3600) / 60);
+  let seconds = Math.floor(sec % 60);
+
+  const pad = (n: number) => n.toString().padStart(2, "0");
+  return `${hours ? hours + ":" : ""}${pad(minutes)}:${pad(seconds)}`;
+}

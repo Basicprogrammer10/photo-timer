@@ -1,7 +1,6 @@
 <script lang="ts">
-  import Steps from "../lib/Steps.svelte";
-  import { Instruction, Wait, state } from "../store";
-  import { parseTime } from "../util";
+  import { Instruction, Wait, state } from "../program";
+  import { parseTime } from "../time";
 
   let selected = "wait";
   let description = "";

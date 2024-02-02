@@ -4,9 +4,8 @@ export class Program {
   steps: Step[] = [
     new Wait("Wait for five seconds", 5),
     new Instruction("Fill with water"),
+    new Wait("Wait again", 8),
   ];
-  pointer = 0;
-  running = false;
 
   constructor(steps: Step[]) {
     // this.steps = steps;
@@ -62,4 +61,5 @@ export class Instruction extends Step {
   }
 }
 
-export const state = writable(new Program([]));
+export const program = new Program([]);
+export const state = writable(program);
