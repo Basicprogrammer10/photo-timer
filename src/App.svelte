@@ -1,4 +1,7 @@
 <script lang="ts">
+  import Steps from "./lib/Steps.svelte";
+  import { state } from "./store";
+
   let selected = "wait";
 </script>
 
@@ -33,12 +36,11 @@
   </div>
 
   <div class="section">
-    <div class="program-item">
-      <button>×</button>
-      <button>⇑</button>
-      <button>⇓</button>
-      <p><span class="program-item-info">WAIT 3m</span> Agitate consciously</p>
-    </div>
+    {#if $state.steps.length > 0}
+      <Steps />
+    {:else}
+      <em>No steps...</em>
+    {/if}
   </div>
 </main>
 
@@ -48,15 +50,5 @@
     padding: 10px;
     width: max-content;
     margin-top: 10px;
-  }
-
-  .program-item {
-    display: ruby;
-  }
-
-  .program-item-info {
-    background-color: #999;
-    padding: 5px;
-    border-radius: 5px;
   }
 </style>
